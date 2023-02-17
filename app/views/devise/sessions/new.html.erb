@@ -1,0 +1,38 @@
+<div class="form-style m-auto mt-5 w-50 row d-flex justify-content-center align-items-center h-100">
+  <!-- Email input -->
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field form-outline mb-4">
+        <%= f.label :email, class:"form-label" %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+      </div>
+      <!-- Password input -->
+      <div class="field form-outline mb-4">
+        <%= f.label :password, class:"form-label" %><br />
+        <%= f.password_field :password, autocomplete: "current-password", class:"form-control" %>
+      </div>
+
+  <!-- 2 column grid layout for inline styling -->
+  
+      <div class="row mb-4">
+        <div class="col d-flex justify-content-center">
+          <!-- Checkbox -->
+          <% if devise_mapping.rememberable? %>
+            <div class="field form-check">
+              <%= f.check_box :remember_me, class:"form-check-input" %>
+              <%= f.label :remember_me, class:"form-check-label" %>
+            </div>
+          <% end %>
+        </div> 
+        <div class="actions">
+        <%= f.submit "Log in", class:"btn btn-primary btn-block" %>
+      </div>   
+      </div>
+
+      <!-- Submit button -->
+      
+  <% end %>
+    <div class="col">
+          <!-- Simple link -->
+          <%= render "devise/shared/links" %>
+    </div>
+</div>
