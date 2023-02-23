@@ -1,24 +1,32 @@
 class CommentsController < ApplicationController
-    before_action : authenticate_user!
+    # before_action : authenticate_user!
+    before_action :set_post
 
     def create
-        @comment = Comment.new(comment_params)
+        
+        @comment = @post.comments.create(comment_params)
         @comment.user = current_user
 
         if @comment.save
-            redirect_to @comment, notice: 'Comment was successfully created.'
+            flash[:notice] = "Comment created successfully"
+            redirect_to post_path(@post)
         else
-            render :new
+            flash[:alert] = "Comment could not be created"
+            redirect_to post_path(@post)
         end
     end
 
     def destroy
-        @comment = Comment.find(params[:id])
+        @comment = @post.comments.find(params[:id]) 
         @comment.destroy
-        redirect_to @comment, notice: 'Comment was successfully destroyed.'
-    end
+        redirect_to post_path(@post), notice: 'Comment was successfully destroyed.'
+    end 
 
     private
+        def set_post
+            @post = Post.find(params[:post_id])
+        end
+
         def comment_params
             params.require(:comment).permit(:body)
         end
