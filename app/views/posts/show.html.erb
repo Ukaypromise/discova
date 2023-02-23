@@ -10,3 +10,7 @@
   <%= button_to "Destroy this post", @post, method: :delete, class:"btn btn-danger mt-3"  %>
 </div>
 </div>
+
+<div class= "container">
+  <%= render "comments/form" post: @post %>
+</div>
