@@ -3,12 +3,14 @@
 
 <h1>See All Posts</h1>
 
-<div id="posts">
+<div class='' id="posts">
   <% @posts.each do |post| %>
-    <%= render post %>
-    <p>
-      <%= link_to "Show this post", post, class:"btn btn-secondary"  %>
-    </p>
+    <div class="card w-25 my-5">
+      <%= render post %>
+      <p>
+        <%= link_to "Show this post", post, class:"btn btn-secondary mx-4"  %>
+      </p>
+    </div>
   <% end %>
 </div>
 

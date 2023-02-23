@@ -1,4 +1,4 @@
-<div class="card w-25">
+<div class="">
   <div id="<%= dom_id post %>" class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
     <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" class="img-fluid"/>
     <a href="#!">
@@ -10,6 +10,5 @@
     <h4> Posted by <%= link_to post.user.name, user_path(post.user) %>
     <h5 class="card-title"><%= post.title %></h5>
     <p class="card-text"><%= post.body %></p>
-    <a href="#!" class="btn btn-primary">Button</a>
   </div>
 </div>
