@@ -25,6 +25,7 @@ class CommentsController < ApplicationController
             else
                 format.html { redirect_to post_url(@post), alert: 'Comment could not update' }
             end
+        end
     end
 
     def destroy

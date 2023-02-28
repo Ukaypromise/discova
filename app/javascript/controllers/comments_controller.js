@@ -4,6 +4,7 @@ export default class extends Controller {
   initialize() {}
   connect() {}
   toggleForm(event) {
+    console.log('Toggling form');
     event.preventDefault();
     event.stopPropagation();
     const formID = event.params['form'];
