@@ -4,13 +4,12 @@
   <div>
     <%= link_to "Edit this post", edit_post_path(@post), class:"btn btn-primary"  %> |
     <%= link_to "Back to posts", posts_path , class:"btn btn-secondary mx-3" %>
-
     <%= button_to "Destroy this post", @post, method: :delete, class:"btn btn-danger mt-3"  %>
   </div>
 </div>
 
 <div class= "container">
-  <%= render "comments/form", post: @post, comment: @post.comments.build %>
+  <%= render "comments/form", post: @post, comment: @post.comments.build, submit_label:"Comment"  %>
   <% @comments.each do |comment| %>
     <%= render "comments/comment", post: @post, comment: comment %>
   <% end %>
