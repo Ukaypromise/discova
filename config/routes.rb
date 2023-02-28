@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   get '/u/:id', to: 'users#profile', as: 'user'
-
+#The following code bellow will redirect to something like this /post/1/comments/4
   resources :posts do
     resources :comments
   end
