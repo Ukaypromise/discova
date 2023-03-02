@@ -1,5 +1,6 @@
-<div class="">
-  <div id="<%= dom_id post %>" class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+
+<div class="container px-4 px-lg-3 my-2"">
+  <div id="<%= dom_id post %>" class="row gx-4 gx-lg-5 align-items-center"  data-mdb-ripple-color="light">
   <% if post.image.attached? %>
       <%= image_tag post.image, class:"img-fluid" %> 
   <% else %>
@@ -16,3 +17,4 @@
     <p class="card-text"><%= post.body %></p>
   </div>
 </div>
+
