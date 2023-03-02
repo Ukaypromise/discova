@@ -1,6 +1,10 @@
 <div class="">
   <div id="<%= dom_id post %>" class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+  <% if post.image.attached? %>
+      <%= image_tag post.image, class:"img-fluid" %> 
+  <% else %>
     <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" class="img-fluid"/>
+  <% end %>
     <a href="#!">
       <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
     </a>
