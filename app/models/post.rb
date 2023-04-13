@@ -7,6 +7,6 @@ class Post < ApplicationRecord
     has_one_attached :image
     has_rich_text :body
     has_many :comments, dependent: :destroy
-    has_noticed_notification model_name: "Notification"
+    has_noticed_notifications model_name: "Notification"
     has_many :notifications, through: :user, dependent: :destroy
 end
