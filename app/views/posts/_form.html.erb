@@ -14,11 +14,13 @@
   <div>
     <%= form.label :title, style: "display: block" %>
     <%= form.text_field :title %>
+    <% post.errors.full_messages_for(:title).each do |message| %>
   </div>
 
   <div>
     <%= form.label :body, style: "display: block" %>
     <%= form.rich_text_area :body %>
+    <%= post.errors.full_message_for(:body).each do|message|%>
   </div>
 
   <div>
