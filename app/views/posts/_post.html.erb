@@ -1,6 +1,7 @@
 
-<div class="container px-4 px-lg-3 my-2"">
+<div class="container px-4 px-lg-3 my-2">
   <div id="<%= dom_id post %>" class="row gx-4 gx-lg-5 align-items-center"  data-mdb-ripple-color="light">
+   <div class="col-md-6"></div>
   <% if post.image.attached? %>
       <%= image_tag post.image, class:"img-fluid" %> 
   <% else %>
@@ -26,5 +27,3 @@
     </p>
   </div>
 </div>
-
-
