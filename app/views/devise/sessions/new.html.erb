@@ -1,14 +1,23 @@
-<div class="form-style m-auto mt-5 w-50 row d-flex justify-content-center align-items-center h-100">
+<section class="vh-90 mt-5">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black" style="border-radius: 25px;">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                
   <!-- Email input -->
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field form-outline mb-4">
-        <%= f.label :email, class:"form-label" %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+        <%= f.label :email, class: "form-label" %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
       </div>
       <!-- Password input -->
       <div class="field form-outline mb-4">
-        <%= f.label :password, class:"form-label" %><br />
-        <%= f.password_field :password, autocomplete: "current-password", class:"form-control" %>
+        <%= f.label :password, class: "form-label" %><br />
+        <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
       </div>
 
   <!-- 2 column grid layout for inline styling -->
@@ -18,13 +27,13 @@
           <!-- Checkbox -->
           <% if devise_mapping.rememberable? %>
             <div class="field form-check">
-              <%= f.check_box :remember_me, class:"form-check-input" %>
-              <%= f.label :remember_me, class:"form-check-label" %>
+              <%= f.check_box :remember_me, class: "form-check-input" %>
+              <%= f.label :remember_me, class: "form-check-label" %>
             </div>
           <% end %>
         </div> 
         <div class="actions">
-        <%= f.submit "Log in", class:"btn btn-primary btn-block" %>
+        <%= f.submit "Log in", class: "btn btn-primary btn-block" %>
       </div>   
       </div>
 
@@ -35,4 +44,13 @@
           <!-- Simple link -->
           <%= render "devise/shared/links" %>
     </div>
+    
+
+
 </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
