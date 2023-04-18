@@ -1,6 +1,22 @@
 <div class= " container">
   <p style="color: green"><%= notice %></p>
-  <%= render @post %>
+  
+  <div class="container px-4 px-lg-3 my-2"">
+  <div id="<%= dom_id @post %>" class="row gx-4 gx-lg-5 align-items-center"  data-mdb-ripple-color="light">
+  <% if @post.image.attached? %>
+      <%= image_tag @post.image, class:" h-25 d-inline-block", style:"width: 120px" %> 
+  <% end %>
+    <a href="#!">
+      <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+    </a>
+  </div>
+  <div class="card-body">
+    <h6> <%= pluralize( @post.views, "views")%></h6>
+    <h4> Posted by <%= link_to @post.user.name, user_path(@post.user) %>
+    <h5 class="card-title"><%= @post.title %></h5>
+     <p class="card-text"><%= @post.body %></p>
+  </div>
+</div>
   <% if current_user==@post.user %>
   <div>
     <%= link_to "Edit this post", edit_post_path(@post), class:"btn btn-primary"  %>

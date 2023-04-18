@@ -14,7 +14,17 @@
     <h6> <%= pluralize( post.views, "views")%></h6>
     <h4> Posted by <%= link_to post.user.name, user_path(post.user) %>
     <h5 class="card-title"><%= post.title %></h5>
-    <p class="card-text"><%= post.body %></p>
+    <p class="card-text">
+      <% post_body_words = post.body.to_plain_text.split(' ') %>
+      <% truncated_body = post_body_words[0..19].join(' ') %>
+      <%= truncated_body %>
+      <% if post_body_words.size > 20 %>
+        <span class="read-more">
+          <%= link_to "Read More", post %>
+        </span>
+      <% end %>
+    </p>
   </div>
 </div>
+
 
