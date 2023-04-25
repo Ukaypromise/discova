@@ -1,16 +1,43 @@
-<div class= "container">
-<p style="color: green"><%= notice %></p>
- <section class="text-center">
-        <h4 class="mb-5"><strong>Latest posts</strong></h4>
+<div class="container">
+  <p style="color: green"><%= notice %></p>
+  <section class="text-center">
+    <h4 class="mb-5"><strong>Latest posts</strong></h4>
 
-  <div class=''id="posts">
-    <% @posts.each do |post| %>
-      <div class="card w-25 my-5">
-      <div class="col">
-        <%= render post %>
-      </div>
-      </div>
-    <% end %>
-  </div>
-</section>
+    <div class="row justify-content-center" id="posts">
+      <% @posts.each do |post| %>
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4 ">
+          <div class="card">
+            <div class="card mb-3">
+              <% if post.image.attached? %>
+                <%= image_tag post.image, class: "card-img-top" %>
+              <% else %>
+                <img
+                  src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp"
+                  class="card-img-top"
+                />
+              <% end %>
+              <div class="card-body">
+                <h5 class="card-title"><%= post.title %></h5>
+                <p class="card-text"><% post_body_words = post.body.to_plain_text.split(" ") %>
+                  <% truncated_body = post_body_words[0..8].join(" ") %>
+                  <%= truncated_body %>
+                  <% if post_body_words.size > 20 %>
+                    <span class="read-more">
+                      <%= link_to "Read More", post %>
+                    </span>
+                  <% end %>
+                </p>
+                <h6>Total Views:
+                  <%= pluralize(post.views, "views") %></h6>
+                <h6>
+                  Posted by
+                  <%= link_to post.user.name, user_path(post.user) %></h6>
+                <p class="card-text"><small class="text-body-secondary"><%= time_ago_in_words(post.updated_at) %></small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </section>
 </div>
