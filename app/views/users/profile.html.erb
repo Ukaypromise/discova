@@ -1,16 +1,14 @@
 <div class="container">
   <h2><%= @user.name %></h2>
   <h4>Last article created <%= time_ago_in_words(@user.created_at) %> ago</h4>
-  <%= pluralize(@user.post.count, 'post') %>
+  <h4>Total Post :<%= pluralize(@user.post.count, 'post') %></h4>
   <h4><%= pluralize(@user.views, 'view') %></h4>
   <hr>
 
   <% @posts.each do |post| %>
     <div>
       <h2><%= post.title %></h2>
-      <%= time_ago_in_words(@post.created_at) %> ago
+      <%= time_ago_in_words(post.created_at) %> ago
     </div>
   <% end %>
-
-  <p>Find me in app/views/users/profile.html.erb</p>
 </div>

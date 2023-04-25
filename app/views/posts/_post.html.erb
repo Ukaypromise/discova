@@ -11,13 +11,13 @@
       <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
     </a>
   </div>
-  <div class="card-body">
+  <div class="card-body ">
     <h6> <%= pluralize( post.views, "views")%></h6>
     <h4> Posted by <%= link_to post.user.name, user_path(post.user) %>
     <h5 class="card-title"><%= post.title %></h5>
     <p class="card-text">
       <% post_body_words = post.body.to_plain_text.split(' ') %>
-      <% truncated_body = post_body_words[0..19].join(' ') %>
+      <% truncated_body = post_body_words[0..15].join(' ') %>
       <%= truncated_body %>
       <% if post_body_words.size > 20 %>
         <span class="read-more">
