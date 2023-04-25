@@ -1,16 +1,42 @@
 <div class="container">
-  <h2><%= @user.name %></h2>
-  <h4>Last article created <%= time_ago_in_words(@user.created_at) %> ago</h4>
-  <h4>Total Post :<%= pluralize(@user.post.count, 'post') %></h4>
-  <h4><%= pluralize(@user.views, 'view') %></h4>
-  <hr>
+  <%= render "shared/user_header" %>
 
-  <% @posts.each do |post| %>
-    <div>
-      <div class="col">
-        <%= render post %>
+  <hr>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <% @posts.each do |post| %>
+      <div class="col mb-3">
+        <div class="card h-100">
+          <% if post.image.attached? %>
+            <%= image_tag post.image, class: "card-img-top img-fluid rounded-0" %>
+          <% else %>
+            <img
+              src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp"
+              class="card-img-top img-fluid rounded-0"
+            />
+          <% end %>
+          <div class="card-body">
+            <h6>
+              <%= pluralize(post.views, "views") %></h6>
+            <h5 class="card-title"><%= post.title %></h5>
+            <%= time_ago_in_words(post.created_at) %>
+            ago
+            <p class="card-text">
+              <% post_body_words = post.body.to_plain_text.split(" ") %>
+              <% truncated_body = post_body_words[0..15].join(" ") %>
+              <%= truncated_body %>
+              <% if post_body_words.size > 20 %>
+                <span class="read-more">
+                  <%= link_to "Read More", post %>
+                </span>
+              <% else %>
+                <span class="read-more">
+                  <%= link_to "Read More", post %>
+                </span>
+              <% end %>
+            </p>
+          </div>
+        </div>
       </div>
-      <%= time_ago_in_words(post.created_at) %> ago
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
