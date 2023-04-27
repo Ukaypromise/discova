@@ -24,15 +24,15 @@
         <li class="nav-item">
           <%= link_to "Write", new_post_path, class: "nav-link active text-secondary" %>
         </li>
-
+        <%= render "/shared/notifications" %>
       </ul>
+      
       <ul class="mx-5 mt-2">
         <% if user_signed_in? %>
           Hello
           <strong><%= current_user.name %></strong>
         <% end %>
       </ul>
-
       <ul class="navbar-nav">
         <%= render "/shared/session_manager" %>
       </ul>

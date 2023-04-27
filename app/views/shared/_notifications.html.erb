@@ -1,8 +1,9 @@
 <% if user_signed_in? %>
 <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle text-secondary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Notification
        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-    <%= @unread.count >= 9 ? "9+ " : @unread.count %> <i class="bi bi-suit-heart-fill" ><i>
+            <%= @unread.count >= 9 ? "9+ " : @unread.count %><i class="fas fa-bell"></i>
         </span>
     </a>
     <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
@@ -11,8 +12,10 @@
             <%= link_to notification.to_notification.message, notification.to_notification.url %>
         </li>
         <% end %>
-        <%= if @read.count >0 && @unread.count >0 %>
-        <li><hr class="dropdown-divider"></li>
+        <% if @read.count >0 && @unread.count >0 %>
+        <li>
+            <hr class="dropdown-divider">
+        </li>
         <% elsif @read.count + @unread.count ==0 %>
         <li class="dropdown-item">No notifications</li>
         <%end%>
@@ -21,5 +24,8 @@
             <%= link_to notification.to_notification.message, notification.to_notification.url %>
         </li>
         <% end %>
+    </ul>
 </li>
 <% end %>
+
+
