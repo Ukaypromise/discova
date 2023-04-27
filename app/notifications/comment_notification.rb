@@ -20,7 +20,7 @@ class CommentNotification < Noticed::Base
   def message
     @post = Post.find(params[:comment][:post_id])
     @comment= Comment.find(params[:comment][:id])
-    @user = User.find(@post.user_id)
+    @user = User.find(@comment.user_id)
    return  @user.name + " made a comment on "+ @post.title
   end
   

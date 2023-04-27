@@ -13,6 +13,6 @@ private
   end
 
   def cleanup_notifications
-    notifications_as_comments.destroy_all
+    notifications_as_comment.destroy_all
   end
 end
