@@ -1,0 +1,14 @@
+<% if user_signed_in? %>
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle text-secondary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <%= current_user.name %>
+    </a>
+    <button type="button" class="btn btn-primary position-relative">
+  notifications
+  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+    <%= @unread.count >= 9 ? "9" : @unread.count %> <i class="bi bi-suit-heart-fill" >
+    <span class="visually-hidden">unread messages</span><i>
+  </span>
+</button>           
+</li>
+<% end %>

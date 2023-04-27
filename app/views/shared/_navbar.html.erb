@@ -24,11 +24,6 @@
         <li class="nav-item">
           <%= link_to "Write", new_post_path, class: "nav-link active text-secondary" %>
         </li>
-        <li type="button" class="btn btn-primary">
-          Notifications <span class="badge text-bg-secondary">4</span>
-        </li>
-        
-
       </ul>
       <ul class="mx-5 mt-2">
         <% if user_signed_in? %>
@@ -38,6 +33,7 @@
       </ul>
 
       <ul class="navbar-nav">
+        <%= render "/shared/notifications"%>
         <%= render "/shared/session_manager" %>
       </ul>
 
