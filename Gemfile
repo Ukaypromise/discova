@@ -13,12 +13,13 @@ gem "sprockets-rails"
 gem "pg", "~> 1.1"
 
 # Formatter for erb
-gem "erb-formatter"
+gem 'erb-formatter'
 gem "devise"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
+gem "erb-formatter"
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
 
@@ -74,3 +75,5 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "noticed", "~> 1.6"

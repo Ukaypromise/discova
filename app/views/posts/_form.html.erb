@@ -14,19 +14,23 @@
   <div>
     <%= form.label :title, style: "display: block" %>
     <%= form.text_field :title %>
+    <% post.errors.full_messages_for(:title).each do |message| %>
+      <span style="color: red"><%= message %></span>
+    <% end %>
   </div>
 
   <div>
     <%= form.label :body, style: "display: block" %>
     <%= form.rich_text_area :body %>
+    <% post.errors.full_messages_for(:body).each do |message| %>
+      <span style="color: red"><%= message %></span>
+    <% end %>
   </div>
 
   <div>
     <%= form.label :image, style: "display: block" %>
     <%= form.file_field :image %>
   </div>
-
-
 
   <div>
     <%= form.submit %>

@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
     before_action :update_allowed_parameters, if: :devise_controller?
-    before_action :authenticate_user!
+    before_action :set_notifications, if: :current_user
+    # before_action :authenticate_user!
 
    
 
@@ -19,4 +20,11 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(_resource_or_scope)
     root_path
   end
+
+  private
+  def set_notifications
+    notifications= Notification.where(recipient: current_user).newest_first.limit(9)
+    @unread= notifications.unread
+    @read= notifications.read
+  end 
 end
