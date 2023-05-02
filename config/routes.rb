@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :comments
   end
   get 'about', to: 'pages#about'
+  get 'search', to: 'posts#search', as: 'search'
+
 
   root "pages#home"
   devise_scope :user do 
