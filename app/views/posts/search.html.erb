@@ -1,10 +1,12 @@
 <div class="container">
   <h1 class="my-5">Search Results</h1>
 
-  <% if @posts.any? %>
+  <% if @results.any? %>
     <ul class="list-group">
-      <% @posts.each do |post| %>
-        <%= render "post"  %>
+      <% @results.each do |result| %>
+        <li class="list-group-item">
+          <%= link_to result.title, result %>
+        </li>
       <% end %>
     </ul>
   <% else %>

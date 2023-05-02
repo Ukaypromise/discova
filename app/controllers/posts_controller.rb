@@ -66,16 +66,13 @@ class PostsController < ApplicationController
     end
   end
 
-  # def search
-  #   if params[:query].present?
-  #     @posts = Post.where("title LIKE ?", "%#{params[:query]}%")
-  #   else
-  #     @posts = []
-  #   end
-  # end
-  def search
-    key = "%#{params[:key]}%"
-    @posts = Post.where("title LIKE ?", key)
+ def search
+    if params[:search].blank?
+      redirect_to(posts_path, alert: "Empty field!") and return
+    else
+      @parameter = params[:search].downcase
+      @results = Post.all.where("lower(title) LIKE :search", search: "%#{@parameter}%")
+    end
   end
 
   private
