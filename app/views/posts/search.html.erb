@@ -1,0 +1,13 @@
+<div class="container">
+  <h1 class="my-5">Search Results</h1>
+
+  <% if @posts.any? %>
+    <ul class="list-group">
+      <% @posts.each do |post| %>
+        <li class="list-group-item"><%= link_to post.title, post_path(post) %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No results found for your search query.</p>
+  <% end %>
+</div>
