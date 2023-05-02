@@ -4,7 +4,7 @@
   <% if @posts.any? %>
     <ul class="list-group">
       <% @posts.each do |post| %>
-        <li class="list-group-item"><%= link_to post.title, post_path(post) %></li>
+        <%= render "post"  %>
       <% end %>
     </ul>
   <% else %>

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :comments
   end
   get 'about', to: 'pages#about'
-  get 'search', to: 'posts#search', as: 'search'
+  get '/search', to: 'posts#search'
 
 
   root "pages#home"

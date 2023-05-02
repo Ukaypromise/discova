@@ -66,12 +66,16 @@ class PostsController < ApplicationController
     end
   end
 
+  # def search
+  #   if params[:query].present?
+  #     @posts = Post.where("title LIKE ?", "%#{params[:query]}%")
+  #   else
+  #     @posts = []
+  #   end
+  # end
   def search
-    if params[:query].present?
-      @posts = Post.where("title LIKE ?", "%#{params[:query]}%")
-    else
-      @posts = []
-    end
+    key = "%#{params[:key]}%"
+    @posts = Post.where("title LIKE ?", key)
   end
 
   private
