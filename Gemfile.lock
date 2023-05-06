@@ -103,6 +103,8 @@ GEM
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
+    font-awesome-sass (6.4.0)
+      sassc (~> 2.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
     http (5.1.1)
@@ -207,6 +209,8 @@ GEM
     ruby-vips (2.1.4)
       ffi (~> 1.12)
     rubyzip (2.3.2)
+    sassc (2.4.0)
+      ffi (~> 1.9)
     selenium-webdriver (4.8.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -263,6 +267,7 @@ DEPENDENCIES
   debug
   devise
   erb-formatter
+  font-awesome-sass (~> 6.4.0)
   image_processing (~> 1.2)
   importmap-rails
   jbuilder

@@ -32,20 +32,30 @@
 </div>
 
 
-<div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-5">
+<div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-5 hover: ">
     <!--Card 1-->
-    <% @posts.each do |post| %>
+    <% @latest_posts.each do |post| %>
     <div class="rounded overflow-hidden shadow-lg">
       <div class="px-6 py-4">
-        <div class="font-bold text-xl mb-2">Mountain</div>
-        <p class="text-gray-700 text-base">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, Nonea! Maiores et perferendis eaque, exercitationem praesentium nihil.
+        <div class="font-bold text-xl mb-2 text-cyan-800"><%= post.title %></div>
+        <p class=" text-base text-orange-600">
+          <% post_body_words = post.body.to_plain_text.split(' ') %>
+            <% truncated_body = post_body_words[0..15].join(' ') %>
+            <%= truncated_body %>
+            <% if post_body_words.size > 5 %>
+              <span class="inline-block bg-gray-200 rounded-full mx-2 px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                <%= link_to "Read More", post %>
+              </span>
+          <% else %>
+            <span class="inline-block bg-gray-200 rounded-full mx-2 px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+              <%= link_to "Read More", post %>
+            </span>
+          <% end %>
         </p>
       </div>
       <div class="px-6 pt-4 pb-2">
-        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
-        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
-        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Posted by <%= link_to post.user.name, user_path(post.user) %></span>
+        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"><h6> <%= pluralize( post.views, "views")%></h6></span>
       </div>
     </div>
     <% end %>
