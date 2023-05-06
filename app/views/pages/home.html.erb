@@ -38,11 +38,11 @@
     <div class="rounded overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
       <div class="px-6 py-4">
       <div class="flex items-center gap-x-4 text-xs">
-          <time datetime="2020-03-16" class="text-gray-500"><%=post.created_at.to_words%></time>
+          <p class="text-gray-500"><%= post.created_at.strftime("%b %d, %Y %l:%M %p") %></p>
           <a href="#" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">Marketing</a>
       </div>
-        <div class="font-bold text-xl mb-2 text-cyan-800"><%= post.title %></div>
-        <p class=" text-base text-orange-600 leading-snug">
+        <div class="mt-2 text-lg leading-8 text-gray-600"><%= post.title %></div>
+        <p class=" mt-5 line-clamp-3 text-sm leading-6 text-gray-600">
           <% post_body_words = post.body.to_plain_text.split(' ') %>
             <% truncated_body = post_body_words[0..15].join(' ') %>
             <%= truncated_body %>

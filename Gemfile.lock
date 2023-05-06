@@ -115,6 +115,7 @@ GEM
     http-cookie (1.0.5)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
+    humanize (2.5.1)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.2)
@@ -268,6 +269,7 @@ DEPENDENCIES
   devise
   erb-formatter
   font-awesome-sass (~> 6.4.0)
+  humanize
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
