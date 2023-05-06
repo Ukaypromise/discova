@@ -1,9 +1,9 @@
-<%= form_with(model: post) do |form| %>
+<%= form_with(model: post, class: "lg:max-w-5xl mx-auto") do |form| %>
   <% if post.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+      <h2 class="font-bold mb-2"><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-      <ul>
+      <ul class="list-disc ml-4">
         <% post.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
@@ -11,28 +11,28 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+  <div class="mb-4">
+    <%= form.label :title, class: "block text-gray-700 font-bold mb-2" %>
+    <%= form.text_field :title, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
     <% post.errors.full_messages_for(:title).each do |message| %>
-      <span style="color: red"><%= message %></span>
+      <span class="block text-red-700 text-sm mt-1"><%= message %></span>
     <% end %>
   </div>
 
-  <div>
-    <%= form.label :body, style: "display: block" %>
-    <%= form.rich_text_area :body %>
+  <div class="mb-4">
+    <%= form.label :body, class: "block text-gray-700 font-bold mb-2" %>
+    <%= form.rich_text_area :body, class: "shadow appearance-none border rounded w-full h-60 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
     <% post.errors.full_messages_for(:body).each do |message| %>
-      <span style="color: red"><%= message %></span>
+      <span class="block text-red-700 text-sm mt-1"><%= message %></span>
     <% end %>
   </div>
 
-  <div>
-    <%= form.label :image, style: "display: block" %>
-    <%= form.file_field :image %>
+  <div class="mb-4">
+    <%= form.label :image, class: "block text-gray-700 font-bold mb-2" %>
+    <%= form.file_field :image, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
   </div>
 <% end %>
