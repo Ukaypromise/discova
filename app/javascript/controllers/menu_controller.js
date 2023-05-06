@@ -5,6 +5,7 @@ export default class extends Controller {
   static targets = ["dropdown"];
   connect() {
     console.log("menu controller connected");
+    
   }
   toggleDropdown() {
     // add or remove the `hidden` class from the dropdown content...
