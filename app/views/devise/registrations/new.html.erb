@@ -32,6 +32,24 @@
                     </div>
                   </div>
 
+                  <div>
+                  <%= f.fields_for :social_handles do |sh| %>
+                    <%= sh.label "Handle", style: "display: block" %>
+                    <%= sh.select :name, SocialHandle::NAME %>
+                    <%= sh.label :url, style: "display: block" %>
+                    <%= sh.text_field :url %>
+                  <% end %>
+                  </div>
+
+                  <div>
+                  <%= f.fields_for :social_handles do |sh| %>
+                    <%= sh.label "Handle", style: "display: block" %>
+                    <%= sh.select :name, SocialHandle::NAME %>
+                    <%= sh.label :url, style: "display: block" %>
+                    <%= sh.text_field :url %>
+                  <% end %>
+                  </div>
+
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                     <div class="field form-outline flex-fill mb-0">
