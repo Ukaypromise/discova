@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_one_attached :image
   has_many :notifications, as: :recipient, dependent: :destroy
+  has_many :social_handle, dependent: :destroy
   
   
   # Include default devise modules. Others available are:
