@@ -103,6 +103,8 @@ GEM
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
+    font-awesome-sass (6.4.0)
+      sassc (~> 2.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
     http (5.1.1)
@@ -113,6 +115,7 @@ GEM
     http-cookie (1.0.5)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
+    humanize (2.5.1)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.2)
@@ -207,6 +210,8 @@ GEM
     ruby-vips (2.1.4)
       ffi (~> 1.12)
     rubyzip (2.3.2)
+    sassc (2.4.0)
+      ffi (~> 1.9)
     selenium-webdriver (4.8.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -222,6 +227,8 @@ GEM
       railties (>= 6.0.0)
     syntax_tree (5.3.0)
       prettier_print (>= 1.2.0)
+    tailwindcss-rails (2.0.29-x86_64-darwin)
+      railties (>= 6.0.0)
     thor (1.2.1)
     timeout (0.3.2)
     turbo-rails (1.3.3)
@@ -261,6 +268,8 @@ DEPENDENCIES
   debug
   devise
   erb-formatter
+  font-awesome-sass (~> 6.4.0)
+  humanize
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
@@ -271,6 +280,7 @@ DEPENDENCIES
   selenium-webdriver
   sprockets-rails
   stimulus-rails
+  tailwindcss-rails (~> 2.0)
   turbo-rails
   tzinfo-data
   web-console
