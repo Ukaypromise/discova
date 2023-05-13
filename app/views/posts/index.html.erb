@@ -2,7 +2,7 @@
   <p><%= notice %></p>
   <section>
     <h4><strong>Latest Articles</strong></h4>
-    <%# <%= render "shared/search" %>
+    <%= render "shared/search" %>
     <div id="posts" class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
       <% @posts.each do |post| %>
         <%= render post %>
