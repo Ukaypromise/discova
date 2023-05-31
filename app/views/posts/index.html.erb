@@ -1,7 +1,6 @@
 
   <p><%= notice %></p>
-  <section>
-    <h4><strong>Latest Articles</strong></h4>
+  <section class="flex flex-col justify-content-center m-auto">
     <%= render "shared/search" %>
     <div data-controller="post-sort" class="w-50 d-flex justify-content-center m-auto">
       <label for="sort_by" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Articles</label>
@@ -10,10 +9,12 @@
         <option value="time_posted_reverse" <% "selected" if params[:sort_by]=="time_posted_reverse" %>>Oldest Articles</option>
       </select>
     </div>
-    <div id="posts" class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
-      <% @posts.each do |post| %>
-        <%= render post %>
-      <% end %>
+    <div id="posts" class="p-10 flex justify-center">
+      <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-2 gap-5">
+        <% @posts.each do |post| %>
+          <%= render post %>
+        <% end %>
+      </div>
     </div>
   </section>
 </div>
