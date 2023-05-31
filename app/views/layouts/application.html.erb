@@ -16,7 +16,9 @@
   <body class="">
     <main class="flex-shrink-0">
       <%= render "shared/navbar" %>
+      <div class="flash">
       <%= render "shared/alerts" %>
+      </div>
       <%= yield %>
     </main>
     <%= render partial: "shared/footer" %>
