@@ -7,7 +7,7 @@ export default class extends Controller {
     console.log("mobile controller connected");
   }
   toggleDropdown() {
-    // add or remove the `hidden` class from the dropdown content...
-    this.dropdownTarget.classList.toggle("hidden");
+    console.log("Helloooooo");
+    this.toggleTarget.classList.toggle("hidden");
   }
 }

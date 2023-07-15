@@ -72,7 +72,13 @@
       </div>
     </div>
     <% end %>
+    <div data-controller="hello">
+      <input type="text" data-hello-target="name" >
+      <button data-action="click->hello#greet" class="text-white bg-black p-4">Greet</button>
+      <span data-hello-target="output"></span>
+    </div>
 </div>
+
 
 
 <div >
