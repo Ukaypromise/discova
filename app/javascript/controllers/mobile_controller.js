@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["toggle"];
   toggleDropdown() {
-    console.log("Helloooooo");
+    console.log("I click the mobile button");
     this.toggleTarget.classList.toggle("hidden");
   }
 }
