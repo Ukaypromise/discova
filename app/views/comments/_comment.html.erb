@@ -7,13 +7,13 @@
     <%end%> 
     <% if current_user==comment.user %>
         <div class="btn-group float-end" >
-            <%= link_to "Edit", nil, remote: true, class:"btn btn-warning ", data:{ 
+            <%= link_to "Edit", nil, remote: true, class:" text-orange-300 ", data:{ 
                 controller:"comments",
                 action:"comments#toggleForm",
                 comments_form_param:"edit-form-#{comment.id}",
                 comments_body_param:"comment-body-#{comment.id}"
                 } %>
-            <%= button_to "Delete", [post, comment], class:"btn btn-danger mx-2", method: :delete %>
+            <%= button_to "Delete", [post, comment], class:"text-red-500 mx-2", method: :delete %>
         </div>
         <div id="edit-form-<%= comment.id%>" class="d-none">
             <%= render "comments/form", post: @post, comment: comment, submit_label:"Update" %>
