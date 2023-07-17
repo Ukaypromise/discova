@@ -21,7 +21,7 @@
 
   <div class="mb-4">
     <%= form.label :body, class: "block text-gray-700 font-bold mb-2" %>
-    <%= form.rich_text_area :body, class: "shadow appearance-none border rounded w-full h-60 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+    <%= form.rich_text_area :body, class: "shadow appearance-none border rounded w-full min-h-60 py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" %>
     <% post.errors.full_messages_for(:body).each do |message| %>
       <span class="block text-red-700 text-sm mt-1"><%= message %></span>
     <% end %>

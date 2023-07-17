@@ -1,4 +1,4 @@
-<div class= " container m-5">
+<div class= "container">
  <div>
     <%= link_to "Back", posts_path , class:"btn btn-secondary mx-3 p-2" %>
 </div>  
@@ -25,7 +25,7 @@
 </div>
 </div>
 
-<div class= "container">
+<div class= "container ">
   <%= render "comments/form", post: @post, comment: @post.comments.build, submit_label:"Comment"  %>
   <% @comments.each do |comment| %>
     <%= render "comments/comment", post: @post, comment: comment %>
