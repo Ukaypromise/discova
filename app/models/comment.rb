@@ -3,15 +3,16 @@ class Comment < ApplicationRecord
   belongs_to :user
   has_rich_text :body
 
-  validates :body, presence: true, length: {maximum:500} 
+  validates :body, presence: true, length: { maximum: 500 }
 
   after_create_commit :notify_recipient
   before_destroy :cleanup_notifications
-  has_noticed_notifications model_name: "Notification"
+  has_noticed_notifications model_name: 'Notification'
 
-private
+  private
+
   def notify_recipient
-    CommentNotification.with(comment: self, post: post).deliver_later(post.user)
+    CommentNotification.with(comment: self, post:).deliver_later(post.user)
   end
 
   def cleanup_notifications

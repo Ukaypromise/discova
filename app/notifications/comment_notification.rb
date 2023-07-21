@@ -19,11 +19,11 @@ class CommentNotification < Noticed::Base
   #
   def message
     @post = Post.find(params[:comment][:post_id])
-    @comment= Comment.find(params[:comment][:id])
+    @comment = Comment.find(params[:comment][:id])
     @user = User.find(@comment.user_id)
-   return  @user.name + " made a comment on "+ @post.title
+    "#{@user.name} made a comment on #{@post.title}"
   end
-  
+
   def url
     post_path(Post.find(params[:comment][:post_id]))
   end
