@@ -27,14 +27,14 @@ jobs:
         run: |
           bundler install
 
-      - name: Prepare database
-        env:
-          PGHOST: localhost
-          PGUSER: postgres
-          PGPASSWORD: postgres
-          RAILS_ENV: test
-        run: |
-          bundle exec rails db:prepare
+      # - name: Prepare database
+      #   env:
+      #     PGHOST: localhost
+      #     PGUSER: postgres
+      #     PGPASSWORD: postgres
+      #     RAILS_ENV: test
+      #   run: |
+      #     bundle exec rails db:prepare
 
       - name: Run rspec tests 
         env:
