@@ -45,7 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run RSpec
-        run: bundle exec rspec  --require rails_helper
+        run: bundle exec rspec
         env:
           RAILS_ENV: test
           POSTGRES_USER: postgres
