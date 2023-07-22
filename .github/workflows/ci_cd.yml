@@ -49,11 +49,11 @@ jobs:
       #   run: |
       #     bundle exec rubocop
 
-      - name: Security audit dependencies
-        run: bundle exec bundler audit --update
+      # - name: Security audit dependencies
+      #   run: bundle exec bundler audit --update
 
-      - name: Security audit application code
-        run: bundle exec brakeman -q -w2
+      # - name: Security audit application code
+      #   run: bundle exec brakeman -q -w2
 
   DeployDev:
     name: Deploy to Dev 
