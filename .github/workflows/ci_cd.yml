@@ -57,7 +57,7 @@ jobs:
 
   DeployDev:
     name: Deploy to Dev 
-    if: github.event_name == 'pull_request' && github.ref == 'refs/heads/develop'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
     needs: [Build]
     runs-on: ubuntu-latest
     environment: 
@@ -69,7 +69,7 @@ jobs:
 
   DeployStaging:
     name: Deploy to Staging 
-    if: github.event_name == 'push' && github.ref == 'refs/heads/staging'
+    if: github.event_name == 'pull_request' && github.ref == 'refs/heads/staging'
     needs: [Build]
     runs-on: ubuntu-latest
     environment: 
@@ -81,7 +81,7 @@ jobs:
 
   DeployProd:
     name: Deploy to Production 
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'pull_request' && github.ref == 'refs/heads/main'
     needs: [DeployStaging]
     runs-on: ubuntu-latest
     environment: 
