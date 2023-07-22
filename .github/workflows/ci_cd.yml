@@ -77,7 +77,7 @@ jobs:
   DeployStaging:
     name: Deploy to Staging 
     if: github.event_name == 'pull_request' && github.ref == 'refs/heads/staging'
-    needs: [Build]
+    needs: [DeployDev]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
