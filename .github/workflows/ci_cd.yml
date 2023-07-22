@@ -30,6 +30,10 @@ jobs:
           gem install bundler
           bundle install --jobs 4 --retry 3
 
+      - name: Install gems
+        run: |
+          bundle install
+
       - name: Setup Database
         run: |
           cp config/database.yml.github-actions config/database.yml
