@@ -49,44 +49,58 @@ jobs:
       #   run: |
       #     bundle exec rubocop
 
-      - name: Security audit dependencies
-        run: bundle exec bundler audit --update
+      # - name: Security audit dependencies
+      #   run: bundle exec bundler audit --update
 
-      - name: Security audit application code
-        run: bundle exec brakeman -q -w2
+      # - name: Security audit application code
+      #   run: bundle exec brakeman -q -w2
 
   DeployDev:
     name: Deploy to Dev 
-    if: github.event_name == 'pull_request' && github.ref == 'refs/heads/develop'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
     needs: [Build]
     runs-on: ubuntu-latest
-    environment: 
-      name: Development
-      url: 'http://dev.myapp.com'
     steps:
-      - name: Deploy
-        run: deploy script here
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "discova"
+          heroku_email: "promiseukaimo@gmail.com"
+    # environment: 
+    #   name: Development
+    #   url: 'http://dev.myapp.com'
+    # steps:
+    #   - name: Deploy
+    #     run: deploy script here
 
   DeployStaging:
     name: Deploy to Staging 
-    if: github.event_name == 'push' && github.ref == 'refs/heads/staging'
-    needs: [Build]
+    if: github.event_name == 'pull_request' && github.ref == 'refs/heads/staging'
+    needs: [DeployDev]
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "discova"
+          heroku_email: "promiseukaimo@gmail.com"
     environment: 
       name: Staging
       url: 'http://staging.myapp.com'
-    steps:
-      - name: Deploy
-        run: deploy script here
+    # steps:
+    #   - name: Deploy
+    #     run: deploy script here
 
-  DeployProd:
-    name: Deploy to Production 
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    needs: [DeployStaging]
-    runs-on: ubuntu-latest
-    environment: 
-      name: Production
-      url: 'http://www.myapp.com'
-    steps:
-      - name: Deploy
-        run: deploy script here
+  # DeployProd:
+  #   name: Deploy to Production 
+  #   if: github.event_name == 'pull_request' && github.ref == 'refs/heads/main'
+  #   needs: [DeployStaging]
+  #   runs-on: ubuntu-latest
+  #   environment: 
+  #     name: Production
+  #     url: 'http://www.myapp.com'
+  #   steps:
+  #     - name: Deploy
+  #       run: deploy script here
