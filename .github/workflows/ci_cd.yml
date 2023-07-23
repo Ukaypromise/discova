@@ -70,7 +70,7 @@ jobs:
 
       - name: Run tests
         env:
-          DATABASE_URL: postgres://postgres:postgres@localhost:5432/discova_test
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/databasename
         run: |
           bin/rails db:create db:schema:load
           bundle exec rspec
