@@ -30,28 +30,27 @@ jobs:
           key: bundle-${{ hashFiles('**/Gemfile.lock') }}
 
       - name: Install dependent libraries
-        run: sudo apt-get install libpq-dev
-
-      - name: Bundle install
-        env:
-          RAILS_ENV: test
         run: |
+          sudo apt-get install libpq-dev
           gem install bundler
-          bundle install --jobs 4 --retry 3
 
       - name: Install gems
         run: |
           bundle install
 
-      - name: Setup Database
+      - name: Prepare Database
         run: |
-          cp config/database.yml.github-actions config/database.yml
-          bundle exec rails db:create
-          bundle exec rake db:schema:load
-        env:
-          RAILS_ENV: test
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+          bundle exec rails db:prepare
+
+      # - name: Setup Database
+      #   run: |
+      #     cp config/database.yml.github-actions config/database.yml
+      #     bundle exec rails db:create
+      #     bundle exec rake db:schema:load
+      #   env:
+      #     RAILS_ENV: test
+      #     POSTGRES_USER: postgres
+      #     POSTGRES_PASSWORD: postgres
 
       - name: Run rubocop 
         run: |
@@ -64,9 +63,7 @@ jobs:
       - name: Security audit application code
         run: bundle exec brakeman -q -w2
 
-      - name: Prepare Database
-        run: |
-          bundle exec rails db:prepare
+
 
       - name: Run tests
         env:
