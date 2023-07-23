@@ -46,7 +46,7 @@ jobs:
       - name: Setup Database
         run: |
           cp config/database.yml.github-actions config/database.yml
-          bundle exec rake db:create
+          bundle exec rails db:create
           bundle exec rake db:schema:load
         env:
           RAILS_ENV: test
@@ -57,20 +57,21 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      # - name: Run RSpec
-      #   run: bundle exec rspec
-      #   env:
-      #     RAILS_ENV: test
-      #     POSTGRES_USER: postgres
-      #     POSTGRES_PASSWORD: postgres
+      - name: Run RSpec
+        run: bundle exec rspec
+        env:
+          RAILS_ENV: test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
       - name: Setup DB, Run tests
         env:
           PGHOST: postgres
           PGUSER: postgres
           RAILS_ENV: test
         run: |
-          bin/rails db:create db:schema:load
-          bundle exec rspec
+          cp config/database.yml.github-actions config/database.yml
+          bundle exec rails db:create
+          bundle exec rails db:schema:load
 
       - name: Run rubocop 
         run: |
@@ -81,6 +82,16 @@ jobs:
 
       - name: Security audit application code
         run: bundle exec brakeman -q -w2
+
+      - name: Setup DB, Run tests
+        env:
+          PGHOST: postgres
+          PGUSER: postgres
+          PGPORT: ${{ job.services.postgres.ports[5432] }}
+          RAILS_ENV: test
+        run: |
+          bin/rails db:create db:schema:load
+          bundle exec rspec
 
   DeployStaging:
     name: Deploy to Staging 
