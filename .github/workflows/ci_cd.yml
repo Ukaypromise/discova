@@ -36,11 +36,7 @@ jobs:
 
       - name: Install gems
         run: |
-          bundle install
-
-      # - name: Prepare Database
-      #   run: |
-      #     bundle exec rails db:prepare
+          bundle install --jobs 4 --retry 3
 
       - name: Setup Database
         run: |
@@ -62,8 +58,6 @@ jobs:
 
       - name: Security audit application code
         run: bundle exec brakeman -q -w2
-
-
 
       - name: Run tests
         env:
