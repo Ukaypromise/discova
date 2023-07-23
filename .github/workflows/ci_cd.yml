@@ -57,12 +57,12 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Run RSpec
-        run: bundle exec rspec
-        env:
-          RAILS_ENV: test
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+      # - name: Run RSpec
+      #   run: bundle exec rspec
+      #   env:
+      #     RAILS_ENV: test
+      #     POSTGRES_USER: postgres
+      #     POSTGRES_PASSWORD: postgres
       - name: Setup DB, Run tests
         env:
           PGHOST: postgres
