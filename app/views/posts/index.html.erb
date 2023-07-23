@@ -1,0 +1,21 @@
+
+  <section class="flex flex-col justify-content-center m-6">
+    <div class="w-full">
+      <%= render "shared/search" %>
+    </div>
+    <div data-controller="post-sort" class="w-50 d-flex justify-content-center m-auto">
+      <label for="sort_by" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Articles</label>
+      <select name="sort_by" id="sort_by" data-action="post-sort#update" data-post-sort-target="select" class="block w-full p-2 mb-6 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <option value="time_posted" <% "selected" if params[:sort_by]=="time_posted" %>>Newest Articles</option>
+        <option value="time_posted_reverse" <% "selected" if params[:sort_by]=="time_posted_reverse" %>>Oldest Articles</option>
+      </select>
+    </div>
+    <div id="posts" class="p-10 flex justify-center">
+      <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-2 gap-5">
+        <% @posts.each do |post| %>
+          <%= render post %>
+        <% end %>
+      </div>
+    </div>
+  </section>
+</div>

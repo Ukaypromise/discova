@@ -1,2 +1,102 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="bg-white">
+  <div class="mx-auto max-w-7xl py-4 sm:px-6 sm:py-8 lg:px-8">
+    <div class="relative isolate overflow-hidden bg-gray-600 px-6 pt-4 pb-4 shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
+      <svg viewBox="0 0 1024 1024" class="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)] sm:left-full sm:-ml-80 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2 lg:translate-y-0" aria-hidden="true">
+        <circle cx="512" cy="512" r="512" fill="url(#759c1415-0410-454c-8f7c-9a820de03641)" fill-opacity="0.7" />
+        <defs>
+          <radialGradient id="759c1415-0410-454c-8f7c-9a820de03641">
+            <stop stop-color="#7775D6" />
+            <stop offset="1" stop-color="#E935C1" />
+          </radialGradient>
+        </defs>
+      </svg>
+      <div class="mx-auto max-w-lg text-center sm:py-12 lg:mx-0 lg:flex-auto lg:py-8 lg:text-left">
+        <h2 class="text-3xl font-bold tracking-normal text-white sm:text-4xl">Welcome to Discova Blog.<br>Start your writing journing!</h2>
+        <div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-center">
+        <% if current_user%>
+            <%= link_to "Write", new_post_path, class: "rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" %>
+        <% else %>
+          <%= link_to "Get Started", new_user_session_path, class: "rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="bg-white py-4 sm:py-8">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl lg:mx-0">
+      <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Latest Articles From the blog</h2>
+      <p class="mt-2 text-lg leading-8 text-gray-600">Ready to level up your Ruby on Rails skills?. Here you will find amazing articles to speedup your learning</p>
+    </div>
+  </div>
+</div>
+<hr>
+<div class=" p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-5">
+    <!--Card 1-->
+    <% @latest_posts.take(3).each do |post| %>
+    <div class=" rounded overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+      <div class="px-6">
+        <div class="flex items-center gap-x-4 text-xs">
+            <p class="text-gray-500"><%= post.created_at.strftime("%b %d, %Y %l:%M %p") %></p>
+        </div>
+        <div class=" text-lg leading-8 text-gray-600 font-bold"><%= post.title %></div>
+        <div class=" line-clamp-3 text-sm leading-6 text-gray-600">
+          <% post_body_words = post.body.to_plain_text.split(' ') %>
+            <% truncated_body = post_body_words[0..15].join(' ') %>
+            <%= truncated_body %>
+            <% if post_body_words.size > 5 %>
+              <span class="inline-block bg-gray-200 rounded-full mx-2 px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+                <%= link_to "Read More", post, class:"no-underline" %>
+              </span>
+          <% else %>
+            <span class="inline-block bg-gray-200 rounded-full mx-2 px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+              <%= link_to "Read More", post, class:"no-underline" %>
+            </span>
+          <% end %>
+        </div>
+        <div class="mt-2 relative  flex items-center gap-x-4">
+          <% if post.user && post.user.image.attached? %>
+              <%= image_tag post.user.image, class:"h-10 w-10 rounded-full bg-gray-50" %> 
+          <% else %>
+            <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" class="h-10 w-10 rounded-full bg-gray-50"/>
+          <% end %>
+          <div >
+            <%= link_to post.user.name, user_path(post.user), class:"font-semibold text-gray-900 no-underline" %>
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"><%= pluralize( post.views, "views")%></span>
+          </div>
+        </div>
+      </div>
+      <div class="px-6 pb-2">
+      </div>
+    </div>
+    <% end %>
+    <div data-controller="hello">
+      <input type="text" data-hello-target="name" >
+      <button data-action="click->hello#greet" class="text-white bg-black p-4">Greet</button>
+      <span data-hello-target="output"></span>
+    </div>
+
+    <div data-controller="clipboard">
+      PIN: <input data-clipboard-target="source" type="text" value="1234" readonly>
+      <button data-action="clipboard#copy" >Copy to Clipboard</button>
+    </div>
+
+<div data-controller="slideshow">
+  <button data-action="slideshow#previous"> ← </button>
+  <button data-action="slideshow#next"> → </button>
+
+  <div data-slideshow-target="slide">🐵</div>
+  <div data-slideshow-target="slide">🙈</div>
+  <div data-slideshow-target="slide">🙉</div>
+  <div data-slideshow-target="slide">🙊</div>
+  <div data-slideshow-target="slide">🙊</div>
+</div>
+</div>
+
+
+
+<div >
+  <%= render "shared/news_letter"%>
+</div>

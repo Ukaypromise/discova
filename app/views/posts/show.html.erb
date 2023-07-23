@@ -1,0 +1,33 @@
+<div class= "container">
+ <div class="mt-2">
+    <%= link_to "Back", posts_path , class:" mx-3 p-2" %>
+</div>  
+  <div class="container px-4 px-lg-3 my-2"">
+  <div id="<%= dom_id @post %>" class="row gx-4 gx-lg-5 align-items-center"  data-mdb-ripple-color="light">
+    <a href="#!">
+      <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+    </a>
+  </div>
+  <div class="card-body">
+    <h2 class="card-title"><%= @post.title %></h2>
+    <h4> Author: <%= link_to @post.user.name, user_path(@post.user), class:"no-underline text-black text-3xl" %>
+    <h6> <%= pluralize( @post.views, "views")%></h6>
+     <p class="card-text"><%= @post.body %></p>
+  </div>
+  <div class="me-auto ">
+      <% if current_user==@post.user %>
+      <div class="flex gap-2 justify-end">
+        <%= link_to "Edit", edit_post_path(@post), class:"btn btn-primary p-2"  %>
+        <%= button_to "Delete", @post, method: :delete, class:"btn btn-danger p-2"  %>
+      </div>
+      <% end %>
+  </div>
+</div>
+</div>
+
+<div class= "container ">
+  <%= render "comments/form", post: @post, comment: @post.comments.build, submit_label:"Comment"  %>
+  <% @comments.each do |comment| %>
+    <%= render "comments/comment", post: @post, comment: comment %>
+  <% end %>
+</div>

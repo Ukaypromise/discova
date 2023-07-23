@@ -1,0 +1,41 @@
+<!--Card 1-->
+
+<div class="rounded overflow-hidden shadow-lg max-w-sm max-h-65 " id="<%= dom_id post %>">
+    <% if post.image.attached? %>
+      <%= image_tag post.image, class:"w-full max-h-20" %> 
+    <% else %>
+    <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" class="w-full max-h-20"/>
+    <% end %>
+  <div class="px-6 py-1">
+    <div class="font-bold text-xl mb-2"><%= post.title %></div>
+    <p class="text-gray-700 text-sm">
+        <% post_body_words = post.body.to_plain_text.split(' ') %>
+        <% truncated_body = post_body_words[0..15].join(' ') %>
+        <%= truncated_body %>.....
+        <% if post_body_words.size > 20 %>
+          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+            <%= link_to "Read More", post, class:"no-underline" %>
+          </span>
+        <% else %>
+          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+            <%= link_to "Read More", post, class:"no-underline" %>
+          </span>
+        <% end %>
+    </p>
+  </div>
+  <div class="px-6 pb-2 flex flex-row justify-center items-center">
+      <span class="inline-block px-1 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+
+          <% if post.user && post.user.image.attached? %>
+              <%= image_tag post.user.image, class:"h-10 w-10 rounded-full bg-gray-50" %> 
+          <% else %>
+            <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" class="h-10 w-10 rounded-full bg-gray-50"/>
+          <% end %>
+          </span>
+    <span class="inline-block px-1 py-1 text-sm font-semibold text-gray-700 mr-2 ">Author: <%= link_to post.user.name, user_path(post.user), class:"no-underline" %></span>
+    <span class="inline-block px-1 py-1 text-sm font-semibold text-gray-700 mr-2"> <%= pluralize( post.views, "views")%></span>
+  </div>
+</div>
+
+
+

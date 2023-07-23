@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="text-center mb-4">
+    <h2><%= @user.name %></h2>
+  </div>
+  <div class="row justify-content-center my-5">
+    <div class="col-10 col-md-6 col-lg-4 mb-4">
+      <div class="card text-center">
+        <div class="card-body">
+          <h4 class="card-title"><%= pluralize(@user.post.count, "Post") %></h4>
+          <p class="card-text">Total Posts</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-10 col-md-6 col-lg-4 mb-4">
+      <div class="card text-center">
+        <div class="card-body">
+          <h4 class="card-title"><%= pluralize(@user.views, "View") %></h4>
+          <p class="card-text">Total Views</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-10 col-md-6 col-lg-4 mb-4">
+      <div class="card text-center">
+        <div class="card-body">
+          <%# <h4 class="card-title"><%= pluralize(@user.followers.count, "Follower") %>
+          <p class="card-text">Total Followers</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-10 col-md-6 col-lg-4 mb-4">
+      <div class="card text-center">
+        <div class="card-body">
+          <%# <h4 class="card-title"><%= pluralize(@user.likes.count, "Like") %>
+          <p class="card-text">Total Likes</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
