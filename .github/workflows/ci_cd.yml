@@ -58,17 +58,19 @@ jobs:
           bundle exec rubocop
 
       # - name: Security audit dependencies
-      #   run: bundle exec bundler audit --update
+      #   run: |
+      #     bundle exec bundler audit --update
 
       - name: Security audit application code
         run: bundle exec brakeman -q -w2
 
-      - name: Setup DB, Run tests
+      - name: Prepare Database
+        run: |
+          bundle exec rails db:prepare
+
+      - name: Run tests
         env:
-          PGHOST: postgres
-          PGUSER: postgres
-          PGPORT: ${{ job.services.postgres.ports[5432] }}
-          RAILS_ENV: test
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/discova_test
         run: |
           bin/rails db:create db:schema:load
           bundle exec rspec
