@@ -53,26 +53,6 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
 
-  Test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      # - name: Run RSpec
-      #   run: bundle exec rspec
-      #   env:
-      #     RAILS_ENV: test
-      #     POSTGRES_USER: postgres
-      #     POSTGRES_PASSWORD: postgres
-      # - name: Setup DB, Run tests
-      #   env:
-      #     PGHOST: postgres
-      #     PGUSER: postgres
-      #     RAILS_ENV: test
-      #   run: |
-      #     cp config/database.yml.github-actions config/database.yml
-      #     bundle exec rails db:create
-      #     bundle exec rails db:schema:load
-
       - name: Run rubocop 
         run: |
           bundle exec rubocop
