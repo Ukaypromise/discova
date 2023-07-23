@@ -59,6 +59,11 @@ jobs:
       - name: Security audit application code
         run: bundle exec brakeman -q -w2
 
+      # Add this step to precompile the assets
+      - name: Precompile assets
+        run: |
+          RAILS_ENV=test bundle exec rake assets:precompile
+
       - name: Run tests
         env:
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/databasename
