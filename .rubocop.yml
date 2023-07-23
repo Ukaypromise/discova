@@ -60,3 +60,8 @@ Style/HashTransformKeys:
   Enabled: false
 Style/HashTransformValues:
   Enabled: false
+Rails/I18nLocaleTexts:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
