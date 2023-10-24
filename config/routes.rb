@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :quotes
   get 'friends/index'
   get 'users/profile'
   devise_for :users, controllers:{

@@ -1,0 +1,9 @@
+<%= turbo_frame_tag quote do %>
+<div id="<%= dom_id quote %>">
+  <p class="my-5">
+    <%= link_to quote.name, quote_path(quote), data:{turbo_frame: "_top"} %>
+  </p>
+  <%= link_to 'Edit', edit_quote_path(quote), class: "rounded-lg py-2 ml-2 px-2 bg-gray-100 inline-block font-medium" %>
+  <%= button_to 'Delete', quote_path(quote), method: :delete, form:{data:{turbo_frame: "_top"}}, class: "rounded-lg py-2 ml-2 px-2 bg-gray-100 inline-block font-medium" %>
+</div>
+  <% end %>
