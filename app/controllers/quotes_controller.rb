@@ -53,9 +53,10 @@ class QuotesController < ApplicationController
     @quote.destroy
 
     respond_to do |format|
-      format.html { redirect_to quotes_url, notice: "Quote was successfully destroyed." }
+      format.html { redirect_to quotes_url, notice: 'Quote was successfully destroyed.' }
       format.json { head :no_content }
-      format.turbo_stream #{ render turbo_stream: turbo_stream.remove(@quote) }
+      # format.turbo_stream { render turbo_stream: turbo_stream.remove(@quote) }
+      format.turbo_stream
     end
   end
 
